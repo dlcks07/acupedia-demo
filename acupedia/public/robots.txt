@@ -1,0 +1,94 @@
+# =============================================
+# Sitemap
+# =============================================
+Sitemap: https://www.acupedia.net/sitemap.xml
+
+# =============================================
+# Search Engines - ALLOWED
+# =============================================
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Microsoft Bing
+User-agent: Bingbot
+Allow: /
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+
+# Apple
+User-agent: Applebot
+Allow: /
+
+# Naver
+User-agent: Yeti
+Allow: /
+
+# Daum
+User-agent: Daum
+Allow: /
+
+# Zum
+User-agent: ZumBot
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# =============================================
+# Social Media & OG Scrapers - ALLOWED
+# =============================================
+
+# KakaoTalk
+User-agent: Kakaotalk-Scrap
+Allow: /
+
+# Meta (Facebook)
+User-agent: facebookexternalhit
+Allow: /
+
+# X (Twitter)
+User-agent: Twitterbot
+Allow: /
+
+# Slack
+User-agent: Slackbot
+Allow: /
+
+# LinkedIn
+User-agent: LinkedInBot
+Allow: /
+
+# Telegram
+User-agent: TelegramBot
+Allow: /
+
+# Discord
+User-agent: Discordbot
+Allow: /
+
+# Pinterest
+User-agent: Pinterestbot
+Allow: /
+
+# Line
+User-agent: Line
+Allow: /
+
+# =============================================
+# Default - BLOCKED
+# =============================================
+User-agent: *
+Disallow: /

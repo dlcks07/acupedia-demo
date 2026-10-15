@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .button {
+    @apply transform cursor-pointer rounded-full border px-4 py-2 transition duration-100 ease-out hover:shadow-lg active:scale-95;
+    @apply max-sm:px-1 py-1;
+  }
+  .mainColor {
+    @apply bg-[#188AEF];
+  }
+  .fontcolor {
+    @apply text-[#182F43];
+  }
+}
+
+.terms p{margin-bottom:15px;}
+.terms i{display:block;width:100%;height:5px;}
+
+.p_tb{width:100%;border-top:1px solid #aaa;}
+.p_tb th{border-bottom:1px solid #ddd;padding:10px;}
+.p_tb td{border-bottom:1px solid #ddd;padding:10px;}
+.btn_wrap{width:100%;text-align:center;margin:20px 0;}
+
+.z-1{z-index:-1;}
+
+/* 텍스트 드래그 방지 - 모든 div에 적용 */
+div {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

@@ -1,0 +1,436 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .paginationWrap {
+    @apply flex justify-center my-[50px];
+  }
+  .pagenation {
+    @apply w-full flex items-center justify-center;
+  }
+  .pagenation__btn {
+    @apply h-6 cursor-pointer;
+  }
+  .pagenation__numbers {
+    @apply flex justify-center items-center gap-1 mx-3; 
+  }
+  .pagenation__numbertext{
+    @apply cursor-pointer text-xl w-[36px] h-[36px] text-center leading-[34px] border border-[#f1f1f1];
+  }
+  .subLeft_pageTit {
+    @apply text-[30px] mb-5;
+    @apply max-sm:text-[20px] max-sm:mb-3;
+  }
+
+
+  /* ////////////////////  wikiDetail /////////////////// */
+  
+  .subLeft__container {
+    @apply max-w-[944px] grow;
+    @apply max-lg:w-full max-w-[100%];
+  }
+  .subLeft__header {
+    @apply flex justify-between mb-10 gap-10;
+    @apply max-md:flex-wrap max-md:gap-5;
+  }
+  .subLeft__titleBox {
+    @apply grow h-fit border-l-4 border-blue01 pl-4;
+    @apply max-md:w-full;
+  }
+  .subLeft__title {
+    @apply tracking-[-2px] text-[28px] text-navy font-semibold;    
+    @apply max-xs:text-[20px];
+  }  
+  .subLeft__subtitle{
+    @apply text-[14px] mr-[5px];
+  }
+  .subLeft__tools {
+    @apply w-[424px];
+    @apply max-md:w-full max-md:mt-10;
+    @apply max-xs:mt-5;
+  }
+  .subLeft__toolbar {
+    @apply flex justify-between h-[44px] rounded-lg border-solid border-2 border-[#84AED3];
+    @apply max-xs:h-[40px];
+  }
+  .subLeft__btn {
+    @apply flex-1 flex justify-center items-center text-[16px] text-[#84AED3] cursor-pointer;
+    @apply max-xs:text-[14px];
+  }
+  .subLeft__btn:not(:first-child) {
+    @apply border-solid border-l-2 border-[#84AED3]; 
+  }
+  .subLeft__btn.current {
+    @apply bg-blue02 text-white ;
+  } 
+  .subLeft__editInfo {
+    @apply flex flex-col ml-2 gap-2 mt-[20px];
+    @apply max-md:w-full;
+    @apply max-xs:gap-1 max-xs:mt-[10px]; 
+  }   
+  .subLeft__editInfo.wikiCompare{
+    @apply mt-0 ml-0;
+    @apply max-md:mt-4;
+  }
+  .subLeft__editRow {
+    @apply flex text-[16px];
+  }
+  .subLeft__editLabel {
+    @apply font-semibold w-[100px] mr-4;
+    @apply max-xs:mr-0;
+  }
+  .subLeft__editorName {
+    @apply mr-5;
+  }
+  .subLeft__editRole {
+    @apply text-[#3F69FA];
+  }
+  .subLeft__no-entry {
+    @apply text-[#9aa6b0] text-[22px] font-light mr-[100px];
+  }
+  .subLeft__create-link {
+    @apply cursor-pointer text-[#188aef] text-[22px] font-medium;
+  }
+  .subLeft__viewer img {
+    @apply max-w-[100%]
+  }
+  .subLeft__rules {
+    @apply my-20 w-full;
+    @apply max-sm:my-10;
+  }
+  .subLeft__rules .ruleBox {
+    @apply border-t-2 border-[#D9E1E8] pt-2;
+  }
+  .subLeft__rules .ruleBox .ruleText {
+    @apply mt-2 text-sm text-right;
+  }
+
+  /* ////////////////////  wikiEdit /////////////////// */
+  textarea.subLeft__title {
+    @apply w-full resize-none;    
+  }
+  .wikiEdit__link {
+    @apply w-full mt-[80px] flex mb-[15px] justify-end;
+  }
+  .wikiEdit__link-btn{
+    @apply w-[250px] bg-blue01 text-white text-[14px] font-bold py-2 px-4 ml-4 rounded;
+    @apply hover:bg-blue;
+  }
+  .wikiEdit__btm-btns {
+    @apply w-full flex items-center justify-end mt-[58px] gap-1;
+    @apply max-sm:mt-[36px];
+  }
+  .wikiEdit__btm-btns .btn {
+    @apply max-sm:w-full;
+  }
+  .wikiEdit__ectForm {
+    @apply mt-5;
+  }
+  .wikiEdit__ectForm-row {
+    @apply w-full flex gap-1 text-[16px] items-center;
+    @apply max-sm:flex-wrap;
+  }
+   .wikiEdit__ectForm-row +  .wikiEdit__ectForm-row {
+    @apply mt-3;
+   }  
+  .wikiEdit__ectForm-select {
+    @apply border border-grey h-10 px-2 py-2 w-full ;
+  }
+  .wikiEdit__ectForm-row-tit {
+    @apply font-bold w-[100px] shrink-0;
+    @apply max-sm:w-full ;
+  }
+   .wikiEdit__ectForm-row-input {
+    @apply flex-1 flex gap-1;  
+   }
+  .wikiEdit__ectForm-textarea{
+    @apply resize-none border border-grey px-2 py-2 w-full;
+  }
+  .wikiEdit__ectForm-textarea.input-num{
+    @apply h-10 overflow-y-hidden; 
+  }
+
+
+  /* //////////////////// 하단저작권  /////////////////// */
+  .wikicmt__wrapper {
+    @apply flex flex-col mb-20;
+  }
+
+  .wikicmt__title {
+    @apply text-[25px] text-[#196db7] font-black mb-[28px];
+  }
+
+  .wikicmt__comment-list {
+    @apply flex flex-col space-y-[38px];
+  }
+
+  .wikicmt__comment-box {
+    @apply h-[185px] border-2 border-solid rounded-md border-[#84AED3] mt-10 border-opacity-50;
+  }
+
+  .wikicmt__textarea-wrapper {
+    @apply h-[128px];
+  }
+
+  .wikicmt__textarea {
+    @apply w-full h-full outline-none rounded-t-md pt-6 pl-6 resize-none;
+  }
+
+  .wikicmt__comment-footer {
+    @apply flex items-center justify-between h-[55px] bg-[#F8F8F8] border-b-2 border-solid rounded-b-md border-b-[#84AED3] border-opacity-50;
+  }
+
+  .wikicmt__charcount {
+    @apply ml-6 text-[#196DB7];
+  }
+
+  .wikicmt__submit-btn {
+    @apply cursor-pointer w-[43px] h-[45px] bg-[#196DB7] mr-[5px] rounded flex justify-center items-center;
+  }
+
+  .wikicmt__submit-icon {
+    @apply h-8 text-white rotate-90;
+  }
+
+
+
+/*//////////////////////// 히스토리 /////////////////////*/
+  .historyListNav {
+    @apply w-[140px] h-[29px] bg-[#EBF2F8] flex items-center;
+  }
+
+  .historyListNav__divider {
+    @apply w-[1px] h-full bg-[#74828F] bg-opacity-50;
+  }
+
+  .historyList {
+    @apply my-5 border-y border-[#d8dce0];
+  }
+
+  .historyItem__container {
+    @apply flex text-[15px] w-full gap-x-[10px] py-[12px] border-b border-dashed border-[#f1f1f1];
+    @apply max-md:text-xs;
+    @apply max-xs:flex-wrap max-xs:gap-x-[0px] max-xs:gap-y-[8px] max-xs:px-[2%];
+  }
+
+  .historyItem__col {
+     @apply flex justify-center items-center;
+     @apply max-xs:justify-start max-xs:items-start;
+  }
+
+  .historyItem__number {
+    @apply w-[5%];
+    @apply max-xs:w-[10%] max-xs:order-1 ;
+  }
+
+  .historyItem__date {
+    @apply w-[23%];
+    @apply max-xs:w-[61%]  max-xs:order-2;
+  }
+
+  .historyItem__button {
+    @apply text-[#188AEF] underline cursor-pointer w-[6%] whitespace-nowrap font-semibold;       
+  }
+
+  .historyItem__button.button01{
+    @apply max-xs:pl-[10%] max-xs:order-4 max-xs:w-[30%];
+  }
+
+  .historyItem__button.button02{
+    @apply max-xs:order-5 max-xs:w-[20%];
+  }
+
+  .historyItem__status {
+    @apply w-[6%] whitespace-nowrap;
+    @apply max-xs:w-[20%] max-xs:order-6;
+  }
+
+  .historyItem__reason {
+    @apply w-[21%];
+    @apply max-xs:order-7 max-xs:w-[25%] max-xs:justify-end; 
+  }
+
+  .historyItem__nickname {
+    @apply w-[21%];
+    @apply max-xs:hidden;
+  }
+
+  .historyItem__authority {
+    @apply font-medium w-[25%];
+    @apply max-xs:order-3 max-xs:justify-end;
+  }
+
+  .historyItem__status--accept {
+    @apply text-[#47CE18];
+  }
+
+  .historyItem__status--reject {
+    @apply text-[#EB3428];
+  }
+
+  .historyItem__reason--reject {
+    @apply text-[#EB3428];
+  }
+
+  .historyItem__authority--none {
+    @apply text-[#60B71C];
+  }
+
+  .historyItem__authority--other {
+    @apply text-[#188AEF];
+  }
+
+  /*//////////////////////// 비교 /////////////////////*/  
+
+  .diffHeader {
+    @apply w-full flex justify-around mt-[56px] font-[600] text-[#182F43] mb-4 text-base;
+    @apply max-sm:mt-[30px] max-sm:text-sm;
+  }
+
+  .diffContainer {
+    @apply w-full max-h-[331px] overflow-y-auto overflow-x-auto mb-20;
+  }
+
+  .diffContainer table{
+    @apply w-full min-w-[480px];
+  }
+
+  .subLeft__bottomBtnWrap {
+    @apply w-full flex items-center justify-center mt-10 mb-32;
+  }
+
+
+  /*//////////////////////// 위키  /////////////////////*/  
+  .searchitem__listRow {
+    @apply py-3 flex items-center bg-[#Fff] border-b-[#f1f1f1] border-b-[1px];
+  }
+
+  .searchitem__listRow.listhead {
+     @apply bg-[#F4F4F4] border-t-[#C4C4C4] border-t-[1px] border-b-[#C4C4C4] border-b-[1px];
+  }
+
+  .searchitem__listRow .searchitem__list-item {
+    @apply text-[15px] text-center ;
+    @apply max-sm:text-[14px];
+  }
+
+  .searchitem__listRow.listhead .searchitem__list-item {
+    @apply font-bold ;
+  }
+  .searchitem__list-item.subject {
+    @apply grow text-left pl-5;
+    @apply max-sm:pl-3;
+  }
+
+  .searchitem__list-item.writer {
+    @apply w-[200px] shrink-0;
+    @apply max-sm:w-[80px];
+  }
+
+  .searchitem__list-item.time {
+    @apply w-[200px] shrink-0;
+    @apply max-sm:w-[100px];
+  } 
+  .searchitem__list-item.no-srcData {
+    @apply grow text-center py-1 text-[#9AA6B0];
+  }
+
+  .searchitem__item-link {
+    @apply border-b-[3px] border-[#1D80D6] text-[#1D80D6] font-bold;
+  }
+
+  .searchitem__listWrap .subject .flex {
+     @apply gap-1;
+  }
+
+  .no-data {
+    @apply text-[22px] text-[#9AA6B0];
+  }
+
+  /*//////////////////////// 학술자료  /////////////////////*/ 
+
+  .libraryItem__row,
+  .acuItem_row,
+  .Prescription__content_row {
+    @apply flex flex-col mt-8 text-[16px];
+    @apply max-sm:text-[14px];
+  }
+
+  .libraryItem__titleWrapper {
+    @apply w-full;
+  }
+
+  .libraryItem__titleClickArea {
+    @apply cursor-pointer flex;
+  }
+
+  .libraryItem__titleBullet {
+    @apply text-[18px];
+  }
+
+  .libraryItem__titleTextWrapper {
+    @apply ml-[15px];
+  }
+
+  .libraryItem__titleText {
+    @apply border-b-[3px] border-[#1D80D6] text-[#1D80D6] font-semibold;
+  }
+
+  .libraryItem__content {
+    @apply mt-3;
+  }
+
+  .schResultTab_container .libraryItem__content{
+    @apply pl-3;
+  }
+
+  .highlight__text {
+    @apply bg-yellow-100 font-[600];
+  }
+
+  .highlight__tit {
+    @apply bg-yellow-100;  }
+
+  .acuItem__titleText{
+    @apply font-[600];
+  }
+  .acuItem__content{
+    @apply space-y-[20px] mt-4;
+  }
+
+   /*//////////////////////// 침구처방  /////////////////////*/ 
+
+  .Prescription__content{
+    @apply space-y-[20px] mt-4;
+  }
+ 
+
+  /* //////////////////// 검색결과페이지  /////////////////// */  
+  .schResultTabWrap{
+    @apply mb-20;
+     @apply max-sm:mb-10;
+  }
+  .schResultTabs{
+    @apply flex h-[35px] space-x-9 text-[20px] cursor-pointer tracking-tighter ;
+    @apply max-xs:justify-around max-xs:space-x-0 max-xs:text-[16px];
+  }
+  .schResultTabs__tab-btn{
+    @apply hover:text-blue01 hover:font-semibold hover:border-b-2 hover:border-blue01 transition;
+  }
+  .schResultTabs__tab-btn.active{
+    @apply text-blue01 font-semibold border-b-2 border-blue01 ; 
+  }
+  .searchitem__list-more {
+    @apply flex justify-end mt-5;
+  }
+  .searchitem__more-btn {
+    @apply text-[#1D80D6] text-[16px] cursor-pointer font-bold;
+  }
+  .schResultTab_container{
+    @apply transition-opacity duration-300 ease-in-out mt-20;
+    @apply max-sm:mt-10;
+   }
+
+}
+

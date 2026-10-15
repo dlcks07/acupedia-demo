@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  
+  .admin__wrap {
+    @apply flex bg-[#ededed] w-full overflow-x-hidden gap-10;
+    @apply max-xl:flex-col;
+  }
+
+  .admin__left-tab {
+    @apply flex flex-col items-center bg-white w-[250px] shrink-0 ;
+    @apply max-xl:w-full max-xl:flex-wrap max-xl:flex-row;
+  } 
+
+  .admin__title {
+    @apply mb-[26px] pl-3 h-[26px] border-l-2 border-[#0A2996] mt-[49px] text-[19px] font-semibold;
+    @apply max-xl:w-full max-xl:ml-5;
+  }
+
+  .tab-btn {
+    @apply cursor-pointer text-[15px] h-[49px] border-[1px] border-[#CECED0] flex justify-center items-center w-full px-1;
+    @apply max-xl:flex-1 max-xl:basis-[20%] max-xl:whitespace-nowrap;
+  }  
+
+  .admin__main-wrap {
+    @apply bg-[#ededed] flex-1 overflow-x-auto px-10 flex justify-center flex-col items-center;    
+    @apply max-xxl:block max-xxl:px-5;
+  }
+
+  .admin__main {
+    @apply bg-white flex mt-[50px] w-[1243px] ;
+    @apply max-xl:mt-0;
+  }
+
+  .admin__pagination-wrap {
+    @apply w-[140px] h-[29px] bg-[#EBF2F8] mt-7 mb-20 flex items-center;
+  }
+
+
+
+}
+

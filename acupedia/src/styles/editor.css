@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components { 
+  .toastui-editor-contents p {
+    @apply text-base;
+    @apply max-xs:text-sm; 
+  }
+  
+}
+
+.toastui-editor-contents pre {
+    margin: 2px 0 8px;
+    padding: 18px;
+    font-size: 16px;
+    background-color: #f4f7f8;
+  }

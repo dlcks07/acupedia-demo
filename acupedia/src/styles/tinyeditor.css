@@ -1,0 +1,151 @@
+/* TinyMCEEditor Modal Styles */
+.tinyeditor-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tinyeditor-modal {
+  background: #fff;
+  border-radius: 8px;
+  min-width: 320px;
+  width: 400px;
+  max-width: 90vw;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+.tinyeditor-modal-title {
+  font-weight:500;
+  text-align:center;
+  font-size:16px;
+  height:42px;
+  line-height:42px;
+  background:#efefef;
+}
+.tinyeditor-modal-cnt{
+    padding: 24px;
+}
+.tinyeditor-modal-textarea {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 8px;
+  font-size: 16px;
+  min-height: 80px;
+  resize: vertical;
+  border:1px solid #ccc;
+}
+.tinyeditor-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap:5px;
+}
+.tinyeditor-modal-btn {
+  padding:0 20px;
+  border: none;
+  border-radius: 4px;
+  background: rgb(10 41 150 / 1);
+  color: #fff;
+  cursor: pointer;
+  height:40px;
+  line-height:38px;
+  border:1px solid rgb(10 41 150 / 1);
+}
+.tinyeditor-modal-btn.cancel {
+  background: #fff;
+  color: #333;
+  border:1px solid #a1a1a1
+}
+
+/* 인용문 툴팁*/
+.footnote {
+  color: #1976d2;
+  padding:0 3px;
+  font-size: 0.85em;
+  cursor: pointer;
+  position: relative;
+}
+
+.footnote::after {
+  content: attr(data-footnote);
+  position: absolute;
+  left: 0;
+  bottom: 25px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.4;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  width: 320px;
+  white-space: normal;
+  opacity: 0;                   
+  transform: translateY(-10px);    
+  pointer-events: none;
+  transition: 
+    opacity 0.25s ease,
+    transform 0.25s ease;        
+  z-index: 999;
+}
+
+.footnote::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  bottom: 12px;
+  border: 7px solid transparent;
+  border-top-color: #ccc;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.footnote:hover::after,
+.footnote.show-tooltip::after,
+.footnote:hover::before,
+.footnote.show-tooltip::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .footnote::after,
+  .footnote::before { display: none !important; }
+
+  .footnote-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.35);
+    z-index: 10000;
+    display: flex; align-items: center; justify-content: center;
+    animation: fn-overlay-in .18s ease-out;
+  }
+  .footnote-modal {
+    width:200px;
+    max-width: calc(100vw - 32px);
+    max-height: 60vh;
+    overflow: auto; -webkit-overflow-scrolling: touch;
+    background: #fff; color: #333;
+    border: 1px solid #d9d9d9; border-radius: 10px;
+    padding: 14px 16px; line-height: 1.55;
+    box-shadow: 0 12px 28px rgba(0,0,0,.18);
+    transform: translateY(8px); opacity: 0;
+    animation: fn-modal-in .22s ease-out forwards;
+    word-break: keep-all; overflow-wrap: anywhere;
+  }
+  @keyframes fn-overlay-in { from{opacity:0} to{opacity:1} }
+  @keyframes fn-modal-in { to{opacity:1; transform:translateY(0)} }
+}
+
+/* TinyMCEEditor 작성 tui 스타일에 맞추기 위해 css 추가 */
+.tinyViewer { font-size:1rem; line-height:1.5rem; }
+.tinyViewer li { margin-top:0.5rem;}
+.tinyViewer li p, 
+.tinyViewer li span { font-size:1rem; line-height:1.5rem; }
+.tinyViewer h3 { line-height:20px; }
+.tinyViewer h3 + ul { margin-top:1rem; }

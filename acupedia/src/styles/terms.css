@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+  .termsWrap__Box {
+    @apply mb-20;
+  }
+
+  .termsWrap__Box .terms {
+    @apply text-base mt-10 max-h-[550px] overflow-y-auto;
+    @apply max-sm:text-sm  max-sm:mt-5 max-sm:max-h-[70vh];
+  }
+
+}

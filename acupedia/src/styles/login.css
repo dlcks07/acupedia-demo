@@ -1,0 +1,335 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .pageTitle{
+    @apply text-7xl font-semibold text-navy;
+    @apply max-lg:text-6xl;
+    @apply max-sm:text-5xl;
+    @apply max-xs:text-3xl;
+  }
+
+  .pageTitleText{
+    @apply text-lg font-light text-navy;
+    @apply max-xs:text-sm;  
+  }
+
+    /* ////////////////////  로그인  /////////////////// */
+  .login__container {
+    @apply flex flex-col items-center w-full max-w-[600px] mt-10 mb-14 mx-auto;
+    @apply max-xs:mt-5;
+  }
+
+  .login__titleWrap {
+    @apply flex justify-between whitespace-nowrap w-full;
+  }
+ 
+  .login__titleWrap__signUpTitle {
+    @apply text-lg font-bold text-navy flex gap-3 items-center;
+    @apply max-xs:gap-1 ;
+    @apply max-xs:text-base ; 
+  }
+
+  .login__titleWrap__signUpButton {
+    @apply flex justify-center items-center w-[52px] aspect-square rounded-full bg-blue01 cursor-pointer;
+    @apply max-sm:w-[40px] ;
+    @apply max-xs:w-[30px] ; 
+  }
+
+   .login__titleWrap__rightArrow {
+    @apply text-white w-[38px] h-auto;
+    @apply max-sm:w-[30px] ;
+    @apply max-xs:w-[24px] ; 
+  }
+  
+  .login__subTitleWrap {
+    @apply w-full mt-3;
+  }   
+
+  .login__formWrap {
+    @apply w-full  bg-ltblue01 rounded-lg p-12 mt-10;
+    @apply max-xs:mt-5 max-xs:p-5; 
+  }
+
+  .login__formWrap__form {
+    @apply w-full flex flex-col;
+  }
+
+  .login__formWrap__passwordWrap {
+    @apply relative mt-3;
+  }
+
+  .login__formWrap__passwordIcon {
+    @apply absolute right-[24px] top-[15px] w-[17px] h-[17px] text-[#dadada] cursor-pointer ;
+  }
+
+  .login__formWrap__loginButton {
+    @apply mt-3;
+  }
+
+  .login__splitLine {
+    @apply w-full h-[1px] mt-[25px] mb-[24px] bg-black/10;
+  }
+
+  .login__googleButton {
+    @apply w-full h-[54px] shadow-lg rounded-md flex items-center justify-center text-black/70 text-xl font-medium cursor-pointer;
+  }
+
+  .login__googleButton__icon {
+    @apply mr-[15px] w-[24px] h-[24px];
+  }
+
+  .login__forgetButton {
+    @apply mt-14 w-full text-blue underline text-lg font-normal text-center;
+    @apply max-xs:mt-8 max-xs:text-base;
+  }  
+
+ /* ////////////////////  계정찾기, 계정 재설정  /////////////////// */
+  .fdAccount__container {
+    @apply flex flex-col items-center w-full max-w-[600px] mt-14 mb-20 mx-auto;
+    @apply max-xs:mt-5;
+  }
+
+  .fdAccount__contentWrap {
+    @apply w-full;
+  }  
+
+  .fdAccount__inputWrap {
+    @apply w-full bg-ltblue01 rounded-lg p-12 mt-10;
+    @apply max-xs:mt-5 max-xs:p-5;
+  }
+
+  .fdAccount__emailInputWrap,
+  .fdAccount__pwInputWrap  {
+    @apply flex items-center justify-between flex-col;
+  }
+
+  .fdAccount__emailInputWrap > span,
+  .fdAccount__pwInputWrap > span {
+    @apply text-lg font-medium text-[#acb3b9] tracking-[1.04px] whitespace-nowrap w-full mb-1;
+  }
+
+  .fdAccount__emailInputWrap__input,
+  .fdAccount__pwInputWrap__input {
+    @apply w-full grow h-[48px] rounded-md border border-[#cfd9fe] text-base font-light indent-4 focus:outline-none focus:border-blue01;
+  }
+
+  .fdAccount__emailInputWrap__input::placeholder {
+    @apply text-[#acb3b9];
+  }
+
+  .fdAccount__resetButton {
+    @apply w-[180px] h-[48px] bg-blue01 rounded-md text-white text-xl font-medium flex justify-center items-center cursor-pointer mt-4 mx-auto;
+    @apply max-sm:text-lg;
+    @apply max-xs:text-base; 
+  }
+
+  .fdAccount__sendTextWrap {
+    @apply my-[60px] text-[#9099b1] text-2xl font-normal flex flex-col items-center;
+    @apply max-sm:text-lg;
+    @apply max-xs:text-base; 
+  }
+
+  .fdAccount__infoWrap {
+    @apply flex justify-evenly items-center mt-10;
+  }
+
+  .fdAccount__infoWrap > span {
+    @apply text-[#c4c4c4] text-lg;
+  }
+
+  .fdAccount__infoLink {
+    @apply text-blue text-lg font-normal flex justify-center;
+    @apply max-xs:text-sm; 
+  }
+
+   /* ////////////////////  계정생성  /////////////////// */
+  .ctAccount__container {
+    @apply w-full flex justify-center max-w-[1000px] mx-auto;
+  }
+
+  .ctAccount__container > div {
+    @apply w-full; 
+  }
+
+  .ctAccount__contentWrap {
+    @apply mt-[50px] mb-[50px] w-full ;
+    @apply max-lg:min-w-[100%] ; 
+    @apply max-xs:mt-0 ;
+  }
+
+  .ctAccount__subTitleWrap {
+    @apply whitespace-pre-line mt-3;
+  }
+
+  .ctAccount__form{
+     @apply flex flex-col mt-20;
+     @apply max-sm:mt-10 ;
+  }
+
+  .ctAccount__inputWrap {
+    @apply flex items-center mb-[23px] ;
+    @apply max-lg:items-start ; 
+    @apply max-sm:flex-wrap;
+  }  
+
+  .ctAccount__inputWrap .inputTit {
+    @apply text-lg font-light text-navy w-[157px] tracking-[-0.5px] shrink-0;
+    @apply max-lg:mt-[6px];
+    @apply max-sm:w-full max-sm:mb-2 max-sm:font-normal;
+  }
+
+   .ctAccount__inputWrap .inputTit.blank {
+      @apply max-sm:h-0 p-0 m-0;
+   }
+  
+  .ctAccount__inputWrap .inputCnts {
+    @apply flex gap-2 grow items-center;
+    @apply max-lg:flex-wrap;
+  }
+
+  .ctAccount__inputWrap .inputText {
+    @apply w-[250px] shrink-0 text-base placeholder:text-[14px] placeholder:font-light focus:outline-none focus:border-blue01;
+    @apply max-sm:w-full text-sm;
+  }
+
+   .ctAccount__inputWrap .emailInput .inputText{
+    @apply max-sm:w-[90%];
+   }
+
+   .ctAccount__inputWrap .emailInput .controllerInput {
+    @apply w-[250px];
+    @apply max-sm:w-full ;
+  }
+
+  .ctAccount__inputWrap .emailInput .css-etb6v7-control,
+  .ctAccount__inputWrap .emailInput .css-qc1kqp-control {
+    @apply max-sm:w-full ;
+    @apply max-xs:text-sm;
+  }
+  
+  .ctAccount__inputWrap .etcInput{
+    @apply text-[#84AED3] w-[254px] h-[50px] border-[#C1D6E9] border-solid border-2 rounded-md focus:outline-none indent-4;
+  }
+  
+  .ctAccount__inputWrap .chcekText {
+    @apply flex items-center text-[#74828F] opacity-60;
+    @apply max-xs:w-full;
+  }
+
+  .alertTextWrap {
+    @apply flex items-center text-sm text-[#74828F] opacity-60 gap-1;
+    @apply max-lg:w-full; 
+  }
+
+  .ctAccount__policyWrap {
+    @apply mt-[30px] flex flex-row items-center;
+  }
+
+  .ctAccount__policyWrap span {
+    @apply text-[14px] font-semibold text-gray-400;
+  }
+
+  .recap {
+    @apply  mt-14 ;
+  }
+
+  .ctAccount__buttonWrap {
+    @apply mt-[52px] flex flex-row justify-end gap-5;
+    @apply max-xs:justify-center max-xs:gap-2;
+  }
+
+  
+  .ctAccount__inputWrap button.certiBtn {
+    @apply w-[120px] h-[48px] text-white text-base font-medium tracking-[1.1px] rounded cursor-pointer flex justify-center items-center bg-[#b4bfc9];
+  }
+  
+  .ctAccount__btn {
+    @apply w-[120px] text-lg font-medium tracking-[1.1px] rounded cursor-pointer flex justify-center items-center ;
+  }
+
+  
+  .ctAccount__highlight {
+    @apply text-[#05ccd9] font-bold cursor-pointer;
+  }
+
+  .ctAccount__recap {
+    @apply mt-[53px];
+  }
+
+  .ctAccount__modalOverlay {
+    @apply fixed inset-0 bg-black bg-opacity-75 z-[999];
+  }
+
+  .ctAccount__modalContent {
+    @apply w-[465px] h-[260px] m-auto bg-white overflow-auto flex flex-col justify-center items-center rounded-md outline-none;
+  }
+
+  .ctAccount__emailVerificationBtn {
+    @apply bg-[#b4bfc9] px-[20px] h-[48px] leading-[48px] rounded-md text-white;
+  }
+
+  .ctAccount__emailCheckText {
+    @apply text-[15px] w-full opacity-60 text-[#74828F] font-normal tracking-[-0.25px] flex;
+  }
+
+  .ctAccount__at {
+    @apply text-[#74828F] text-[18px] font-light mx-[5px];
+  }
+
+  .ctAccount__idAlert {
+    @apply text-[13px] font-light text-[#74828F] opacity-60 mt-[2px];
+  }
+
+  .ctAccount__alertIcon {
+    @apply text-[#74828F] opacity-60 mx-[5px];
+  }
+
+  .ctAccount__modalConfirmBtn {
+    @apply cursor-pointer rounded-md mt-6 w-[385px] h-11 bg-[#183BB7] text-white flex justify-center items-center text-sm;
+  }
+
+  /* ////////////////////  계정생성 모달창  /////////////////// */
+  .signupModal__wrap {
+    @apply flex flex-col items-center gap-3;
+  }
+
+  .signupModal__signupButton {
+    @apply w-full h-[44px] rounded-md bg-[#183BB7] text-white text-base font-bold flex items-center justify-center cursor-pointer;
+  }
+
+  .signupModal__googleButton {
+    @apply w-full h-[44px] rounded-md border border-black border-opacity-10 flex items-center justify-center cursor-pointer;
+  }
+
+  .signupModal__googleButton__inner {
+    @apply flex items-center justify-center gap-3;
+  }
+
+  .signupModal__googleButton__icon {
+    @apply w-6 h-6;
+  }
+
+  .signupModal__googleButton__text {
+    @apply text-base font-medium text-black text-opacity-50;
+  }
+
+  /* ////////////////////  회원가압 완료 모달  /////////////////// */
+  .welcomeMember__tit {
+    @apply text-xl text-[#54595E] font-semibold text-center;
+  }
+
+  .wecomeMember_text {
+    @apply text-center whitespace-pre-line text-sm text-[#54595e] text-opacity-80;
+  }
+
+  .wecomeMember_text p + p {
+    @apply mt-2;
+  }
+
+  .wecomeMember_text p br {
+    @apply max-xs:hidden ;
+  }
+
+}

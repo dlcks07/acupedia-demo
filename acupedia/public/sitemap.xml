@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+>
+  <url>
+    <loc>https://www.acupedia.net/</loc>
+    <lastmod>2022-06-21T00:07:49+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.acupedia.net/login</loc>
+    <lastmod>2022-06-21T00:07:49+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.acupedia.net/findAccount</loc>
+    <lastmod>2022-06-21T00:07:49+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.acupedia.net/resetAccount</loc>
+    <lastmod>2022-06-21T00:07:49+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.acupedia.net/createAccount</loc>
+    <lastmod>2022-06-21T00:07:49+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.acupedia.net/searchResult?search=장</loc>
+    <lastmod>2022-06-21T00:07:49+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.acupedia.net/wikiDetail/1</loc>
+    <lastmod>2022-06-21T00:07:49+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.acupedia.net/wiki/1?index=1</loc>
+    <lastmod>2022-06-21T00:07:49+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.acupedia.net/acupoints?search=장&amp;index=1</loc>
+    <lastmod>2022-06-21T00:07:49+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.acupedia.net/prescription?search=장&amp;index=1</loc>
+    <lastmod>2022-06-21T00:07:49+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.acupedia.net/wikiEdit?search=장&amp;index=1</loc>
+    <lastmod>2022-06-21T00:07:49+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.acupedia.net/LibraryEdit?search=장&amp;index=1</loc>
+    <lastmod>2022-06-21T00:07:49+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.acupedia.net/mypage</loc>
+    <lastmod>2022-06-21T00:07:49+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.acupedia.net/terms</loc>
+    <lastmod>2022-06-21T00:07:49+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.acupedia.net/privacy</loc>
+    <lastmod>2022-06-21T00:07:49+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.acupedia.net/404</loc>
+    <lastmod>2022-06-21T00:07:49+00:00</lastmod>
+  </url>
+</urlset>

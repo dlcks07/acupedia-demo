@@ -1,0 +1,24 @@
+export { default as Home } from './Home';
+export { default as Login } from './Login';
+export { default as FindAccount } from './FindAccount';
+export { default as ResetAccount } from './ResetAccount';
+export { default as SearchResult } from './SearchResult';
+export { default as Wiki } from './Wiki';
+export { default as Library } from './Library';
+export { default as WikiDetail } from './WikiDetail';
+export { default as LibraryDetail } from './LibraryDetail';
+export { default as Acupoints } from './Acupoints';
+export { default as Prescription } from './Prescription';
+export { default as WikiEdit } from './WikiEdit';
+export { default as LibraryEdit } from './LibraryEdit';
+export { default as LibraryEditWyisygs } from './LibraryEditWyisygs';
+export { default as Mypage } from './Mypage';
+export { default as WikiHistory } from './WikiHistory';
+export { default as Admin } from './Admin';
+export { default as Privacy } from './Privacy';
+export { default as Terms } from './Terms';
+export { default as WikiCompare } from './WikiCompare';
+export { default as AcupediaIntro } from './AcupediaIntro';
+export { default as WikiGuide } from './WikiGuide';
+export { default as Kcd } from './Kcd';
+
