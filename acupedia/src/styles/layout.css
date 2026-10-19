@@ -264,6 +264,17 @@
     @apply max-xs:mt-5;
   }
 
+  .side__actionBtns {
+    @apply flex flex-col gap-2 w-full mb-4;
+  }
+
+  button.side__actionBtn {
+    @apply box-border w-full h-12 rounded-md bg-blue01 text-white text-[15px] font-medium flex items-center justify-center cursor-pointer border border-solid border-blue01 p-0 m-0;
+    font-family: inherit;
+    @apply hover:bg-blue hover:border-blue;
+    @apply max-sm:h-10 max-sm:text-sm;
+  }
+
   .side__sectionTit {
     @apply font-bold text-[16px] w-full h-[56px] flex items-center justify-center bg-[#F4F5F4] text-[#1c1c1c] border-b border-[#d8dce0];
     @apply max-sm:h-[48px];

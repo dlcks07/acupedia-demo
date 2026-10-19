@@ -38,6 +38,104 @@
     @apply w-[140px] h-[29px] bg-[#EBF2F8] mt-7 mb-20 flex items-center;
   }
 
+  /* 작성이 필요한 문서 편집 */
+  .adminNeeded {
+    @apply w-full px-10 pb-12;
+  }
+  .adminNeeded__heading {
+    @apply mb-3 pl-3 h-[26px] border-l-2 border-[#0A2996] mt-[49px] text-[19px] font-semibold;
+  }
+  .adminNeeded__desc {
+    @apply m-0 mb-6 text-sm text-[#68727e] leading-relaxed;
+  }
+  .adminNeeded__panes {
+    @apply flex gap-6 items-start;
+    @apply max-xl:flex-col;
+  }
+  .adminNeeded__pane {
+    @apply flex-1 min-w-0 border border-solid border-[#CECED0];
+    @apply max-xl:w-full;
+  }
+  .adminNeeded__pane--tabs {
+    @apply flex-none w-[440px];
+    @apply max-xl:w-full;
+  }
+  .adminNeeded__paneHeader {
+    @apply flex items-center gap-2 h-[49px] px-4 bg-[#0a2996] text-white text-[17px];
+  }
+  .adminNeeded__count {
+    @apply ml-1 text-xs font-medium opacity-70;
+  }
+  .adminNeeded__list {
+    @apply m-0 p-0 list-none max-h-[520px] overflow-y-auto;
+  }
+  .adminNeeded__row {
+    @apply flex items-center gap-2 min-h-[49px] px-4 border-b border-solid border-[#ededed] text-[15px];
+  }
+  .adminNeeded__pane--tabs .adminNeeded__row {
+    @apply cursor-pointer hover:bg-[#EDF6FE];
+  }
+  .adminNeeded__row.active {
+    @apply bg-[#EDF6FE] font-semibold text-[#0A2996];
+  }
+  .adminNeeded__row.active .adminNeeded__count {
+    @apply text-[#0A2996];
+  }
+  .adminNeeded__no {
+    @apply w-8 shrink-0 text-center font-medium text-[#3B7AB2];
+  }
+  .adminNeeded__rowText {
+    @apply flex-1 min-w-0 truncate;
+  }
+  .adminNeeded__rowBtns {
+    @apply flex shrink-0 gap-1;
+  }
+  .adminNeeded__addRow {
+    @apply flex gap-2 p-4 border-b border-solid border-[#ededed] bg-[#fafafa];
+  }
+  .adminNeeded__pane--tabs .adminNeeded__addRow {
+    @apply border-b-0 border-t;
+  }
+  .adminNeeded__fixedTag {
+    @apply shrink-0 px-2 py-[2px] rounded bg-[#ededed] text-[11px] font-medium text-[#68727e];
+  }
+  .adminNeeded__catBadge {
+    @apply shrink-0 max-w-[140px] truncate px-2 py-[2px] rounded border border-solid border-[#c9d4f5] bg-[#f3f7ff] text-xs text-[#0A2996];
+  }
+  .adminNeeded__catBadge.uncategorized {
+    @apply border-[#e3e6e9] bg-[#f5f5f5] text-[#68727e];
+  }
+  select.adminNeeded__select {
+    @apply shrink-0 w-[140px] h-[34px] px-2 border border-solid border-[#CECED0] rounded bg-white text-sm cursor-pointer;
+    @apply focus:outline-none focus:border-[#0A2996];
+  }
+  input.adminNeeded__input {
+    @apply flex-1 min-w-0 h-[34px] px-3 border border-solid border-[#CECED0] rounded text-sm;
+    @apply focus:outline-none focus:border-[#0A2996];
+  }
+  button.adminNeeded__btn {
+    @apply h-[30px] px-3 rounded border border-solid border-[#CECED0] bg-white text-[13px] text-[#374151] whitespace-nowrap cursor-pointer;
+    @apply hover:bg-[#f7f8fa];
+  }
+  .adminNeeded__addRow button.adminNeeded__btn {
+    @apply h-[34px];
+  }
+  button.adminNeeded__btn.primary {
+    @apply bg-[#0A2996] border-[#0A2996] text-white hover:bg-[#081f70];
+  }
+  button.adminNeeded__btn.danger {
+    @apply text-[#c0392b] border-[#f0c4bf] hover:bg-[#fdf1ef];
+  }
+  button.adminNeeded__btn.icon {
+    @apply px-2 text-[11px];
+  }
+  button.adminNeeded__btn:disabled {
+    @apply opacity-40 cursor-not-allowed hover:bg-white;
+  }
+  .adminNeeded__empty {
+    @apply m-0 py-10 text-center text-sm text-[#7b8490];
+  }
+
 
 
 }

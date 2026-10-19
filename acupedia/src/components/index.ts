@@ -14,6 +14,16 @@ export { default as Comments } from './Comments';
 export { default as CommentsItem } from './CommentsItem';
 export { default as TUI } from './TUI';
 export { default as WikiRule } from './WikiRule';
+export { default as WikiType } from './WikiType';
+export {
+  default as WikiLinkModal,
+  WikiLinkAutocomplete,
+  WIKI_LINK_SEARCH_ITEMS,
+  searchWikiLinkItems,
+  buildWikiLinkHtml,
+  addNeededWikiDocument,
+} from './WikiLink';
+export type { WikiLinkItem, WikiLinkSource } from './WikiLink';
 export { default as LibraryRule } from './LibraryRule';
 // MetaTagProvider 비활성화: react-helmet-async 페이지별 Helmet으로 대체
 // export { default as MetaTagProvider } from './MetaTagProvider';

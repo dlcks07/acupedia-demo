@@ -12,6 +12,9 @@ import { VERTICAL } from 'constants/GoogleAds';
 import { useQuery } from 'react-query';
 import { categoryAPi, wikiApi } from 'libs/api';
 import makeStyles from '@mui/material/styles/makeStyles';
+import { toast } from 'react-toastify';
+import { useAppDispatch } from 'store';
+import settingSlice from 'slices/setting';
 
 interface Category {
   id: string;
@@ -37,6 +40,7 @@ interface LibraryHistory {
 function SideComponent() {
   const location = useLocation();
   const navigation = useNavigate();
+  const dispatch = useAppDispatch();
   const [expandedNodes, setExpandedNodes] = useState<string[]>([]);
   const [curLocation, setCurLocation] = useState('');
   const [item, setItem] = useState('');
@@ -59,6 +63,37 @@ function SideComponent() {
       pathname: '/wikiDetail',
       search: `?title=${title}`,
     });
+  };
+
+  const onNewDocumentClick = () => {
+    const jwtToken = sessionStorage.getItem('jwtToken');
+    const authority = sessionStorage.getItem('authority');
+    const curLocation = location.pathname + location.search;
+
+    if (jwtToken) {
+      if (
+        authority === 'ADMIN' ||
+        authority === 'DOCTOR' ||
+        authority === 'STUDENT'
+      ) {
+        navigation({
+          pathname: '/wikiEdit',
+          search: '?title=newWiki',
+        });
+      } else {
+        toast(
+          '일반회원은 위키 작성 권한이 없습니다. 한의사/한의대생은 등업을 통해 편집권한을 얻으시기 바랍니다.'
+        );
+      }
+      return;
+    }
+
+    dispatch(
+      settingSlice.actions.setLastPageBeforeLogin({
+        lastPageBeforeLogin: curLocation,
+      })
+    );
+    navigation('/login');
   };
 
   const onLibraryPageClick = (title: string) => {
@@ -145,6 +180,24 @@ function SideComponent() {
 
   return (
   <div className="side__container">
+    {location.pathname === '/wikiGuide' && (
+      <div className="side__actionBtns">
+        <button
+          type="button"
+          className="side__actionBtn"
+          onClick={onNewDocumentClick}
+        >
+          + 새 문서 작성
+        </button>
+        <button
+          type="button"
+          className="side__actionBtn"
+          onClick={() => navigation('/wikiNeeded')}
+        >
+          + 작성이 필요한 문서
+        </button>
+      </div>
+    )}
     <div className="side__sectionWrap">
     {location.pathname.includes('/library') ||
     location.pathname.includes('/prescription') ||
@@ -163,7 +216,6 @@ function SideComponent() {
       </div>
     ) : (
       <>
-        
         <div className="side__section">
           <p className="side__sectionTit">최근 변경된 위키 페이지</p>
           <div className="side__scrollBox">

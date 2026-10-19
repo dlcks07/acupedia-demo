@@ -13,9 +13,9 @@
     @apply h-6 cursor-pointer;
   }
   .pagenation__numbers {
-    @apply flex justify-center items-center gap-1 mx-3; 
+    @apply flex justify-center items-center gap-1 mx-3;
   }
-  .pagenation__numbertext{
+  .pagenation__numbertext {
     @apply cursor-pointer text-xl w-[36px] h-[36px] text-center leading-[34px] border border-[#f1f1f1];
   }
   .subLeft_pageTit {
@@ -23,9 +23,8 @@
     @apply max-sm:text-[20px] max-sm:mb-3;
   }
 
-
   /* ////////////////////  wikiDetail /////////////////// */
-  
+
   .subLeft__container {
     @apply max-w-[944px] grow;
     @apply max-lg:w-full max-w-[100%];
@@ -39,10 +38,10 @@
     @apply max-md:w-full;
   }
   .subLeft__title {
-    @apply tracking-[-2px] text-[28px] text-navy font-semibold;    
+    @apply tracking-[-2px] text-[28px] text-navy font-semibold;
     @apply max-xs:text-[20px];
-  }  
-  .subLeft__subtitle{
+  }
+  .subLeft__subtitle {
     @apply text-[14px] mr-[5px];
   }
   .subLeft__tools {
@@ -59,17 +58,17 @@
     @apply max-xs:text-[14px];
   }
   .subLeft__btn:not(:first-child) {
-    @apply border-solid border-l-2 border-[#84AED3]; 
+    @apply border-solid border-l-2 border-[#84AED3];
   }
   .subLeft__btn.current {
-    @apply bg-blue02 text-white ;
-  } 
+    @apply bg-blue02 text-white;
+  }
   .subLeft__editInfo {
     @apply flex flex-col ml-2 gap-2 mt-[20px];
     @apply max-md:w-full;
-    @apply max-xs:gap-1 max-xs:mt-[10px]; 
-  }   
-  .subLeft__editInfo.wikiCompare{
+    @apply max-xs:gap-1 max-xs:mt-[10px];
+  }
+  .subLeft__editInfo.wikiCompare {
     @apply mt-0 ml-0;
     @apply max-md:mt-4;
   }
@@ -93,7 +92,7 @@
     @apply cursor-pointer text-[#188aef] text-[22px] font-medium;
   }
   .subLeft__viewer img {
-    @apply max-w-[100%]
+    @apply max-w-[100%];
   }
   .subLeft__rules {
     @apply my-20 w-full;
@@ -107,13 +106,117 @@
   }
 
   /* ////////////////////  wikiEdit /////////////////// */
+  textarea.subLeft__title,
+  input.subLeft__title {
+    @apply w-full box-border rounded-md bg-white;
+  }
   textarea.subLeft__title {
-    @apply w-full resize-none;    
+    @apply resize-none;
+  }
+  input.subLeft__title {
+    @apply h-[52px] p-3 border border-solid border-[#767676];
+    line-height: 52px;
+  }
+
+  .wikiType {
+    @apply w-full mb-8;
+  }
+  .wikiType__titleBox {
+    @apply w-full mb-5;
+  }
+  input.wikiType__titleInput {
+    @apply h-auto p-0 m-0 border-0 rounded-none bg-transparent outline-none;
+    line-height: 1.3;
+  }
+  input.wikiType__titleInput::placeholder {
+    @apply text-[#9aa6b0];
+  }
+  .wikiType__typeRow {
+    @apply flex flex-wrap items-center justify-between gap-3 w-full;
+    @apply max-sm:flex-col max-sm:items-stretch;
+  }
+  .wikiType__typeGroup,
+  .wikiType__needGroup {
+    @apply flex flex-wrap items-center gap-3;
+    @apply max-sm:w-full;
+  }
+  .wikiType__typeLabel {
+    @apply shrink-0 text-sm font-bold text-[#4b5563] whitespace-nowrap;
+  }
+  .wikiType__select {
+    @apply box-border w-[250px] max-w-full h-[42px] pl-3 pr-10 mx-3 bg-white border border-solid border-[#cfd6dd] rounded-md text-sm text-[#222] outline-none;
+    font-family: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23222' d='M1.4 0.6L6 5.2 10.6 0.6 12 2 6 8 0 2z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 12px 8px;
+    @apply max-sm:w-full;
+  }
+  .wikiType__select:focus {
+    @apply border-blue01;
+  }
+  .wikiType__hint {
+    @apply text-sm text-[#68727e] whitespace-nowrap;
+    @apply max-sm:whitespace-normal;
+  }
+  button.wikiType__load {
+    @apply box-border h-[42px] px-4 m-0 rounded-md bg-blue01 text-white text-sm font-semibold cursor-pointer border border-solid border-blue01 whitespace-nowrap;
+    font-family: inherit;
+    @apply hover:bg-blue hover:border-blue;
+    @apply max-sm:w-full;
+  }
+  .wikiType__desc {
+    @apply mt-4 py-3 px-4 border-l-[3px] border-solid border-blue01 bg-ltblue01 text-sm text-[#5d6873] leading-relaxed;
+  }
+  .wikiNeeded {
+    @apply my-10;
+  }
+  .wikiNeeded__top {
+    @apply flex items-center justify-between gap-4 mb-8;
+    @apply max-sm:flex-col max-sm:items-start;
+  }
+  .wikiNeeded__desc {
+    @apply m-0 text-sm text-[#5d6873] leading-relaxed;
+  }
+  button.wikiNeeded__shuffle {
+    @apply box-border shrink-0 h-[38px] px-4 m-0 rounded-md bg-white text-blue01 text-sm font-semibold cursor-pointer border border-solid border-blue01 whitespace-nowrap;
+    font-family: inherit;
+    @apply hover:bg-ltblue01;
+  }
+  .wikiNeeded__empty {
+    @apply py-16 text-center text-sm text-[#7b8490];
+  }
+  .wikiNeeded__grid {
+    @apply grid grid-cols-4 gap-x-8 gap-y-10;
+    @apply max-xl:grid-cols-2 max-sm:grid-cols-1;
+  }
+  .wikiNeeded__column {
+    @apply min-w-0;
+  }
+  .wikiNeeded__columnTitle {
+    @apply m-0 mb-3 text-lg font-bold text-[#252a31];
+  }
+  .wikiNeeded__columnEmpty {
+    @apply m-0 pl-4 border-l border-solid border-[#dadde0] text-sm text-[#7b8490];
+  }
+  .wikiNeeded__list {
+    @apply m-0 pl-8 border-l border-solid border-[#dadde0] list-disc;
+  }
+  .wikiNeeded__item {
+    @apply leading-7 text-[#3366cc];
+  }
+  button.wikiNeeded__link {
+    @apply p-0 m-0 border-0 bg-transparent text-left text-sm text-[#3366cc] cursor-pointer;
+    font-family: inherit;
+    @apply hover:underline;
   }
   .wikiEdit__link {
     @apply w-full mt-[80px] flex mb-[15px] justify-end;
   }
-  .wikiEdit__link-btn{
+  .wikiEdit__link-btn {
     @apply w-[250px] bg-blue01 text-white text-[14px] font-bold py-2 px-4 ml-4 rounded;
     @apply hover:bg-blue;
   }
@@ -131,26 +234,25 @@
     @apply w-full flex gap-1 text-[16px] items-center;
     @apply max-sm:flex-wrap;
   }
-   .wikiEdit__ectForm-row +  .wikiEdit__ectForm-row {
+  .wikiEdit__ectForm-row + .wikiEdit__ectForm-row {
     @apply mt-3;
-   }  
+  }
   .wikiEdit__ectForm-select {
-    @apply border border-grey h-10 px-2 py-2 w-full ;
+    @apply border border-grey h-10 px-2 py-2 w-full;
   }
   .wikiEdit__ectForm-row-tit {
     @apply font-bold w-[100px] shrink-0;
-    @apply max-sm:w-full ;
+    @apply max-sm:w-full;
   }
-   .wikiEdit__ectForm-row-input {
-    @apply flex-1 flex gap-1;  
-   }
-  .wikiEdit__ectForm-textarea{
+  .wikiEdit__ectForm-row-input {
+    @apply flex-1 flex gap-1;
+  }
+  .wikiEdit__ectForm-textarea {
     @apply resize-none border border-grey px-2 py-2 w-full;
   }
-  .wikiEdit__ectForm-textarea.input-num{
-    @apply h-10 overflow-y-hidden; 
+  .wikiEdit__ectForm-textarea.input-num {
+    @apply h-10 overflow-y-hidden;
   }
-
 
   /* //////////////////// 하단저작권  /////////////////// */
   .wikicmt__wrapper {
@@ -193,9 +295,7 @@
     @apply h-8 text-white rotate-90;
   }
 
-
-
-/*//////////////////////// 히스토리 /////////////////////*/
+  /*//////////////////////// 히스토리 /////////////////////*/
   .historyListNav {
     @apply w-[140px] h-[29px] bg-[#EBF2F8] flex items-center;
   }
@@ -215,13 +315,13 @@
   }
 
   .historyItem__col {
-     @apply flex justify-center items-center;
-     @apply max-xs:justify-start max-xs:items-start;
+    @apply flex justify-center items-center;
+    @apply max-xs:justify-start max-xs:items-start;
   }
 
   .historyItem__number {
     @apply w-[5%];
-    @apply max-xs:w-[10%] max-xs:order-1 ;
+    @apply max-xs:w-[10%] max-xs:order-1;
   }
 
   .historyItem__date {
@@ -230,14 +330,14 @@
   }
 
   .historyItem__button {
-    @apply text-[#188AEF] underline cursor-pointer w-[6%] whitespace-nowrap font-semibold;       
+    @apply text-[#188AEF] underline cursor-pointer w-[6%] whitespace-nowrap font-semibold;
   }
 
-  .historyItem__button.button01{
+  .historyItem__button.button01 {
     @apply max-xs:pl-[10%] max-xs:order-4 max-xs:w-[30%];
   }
 
-  .historyItem__button.button02{
+  .historyItem__button.button02 {
     @apply max-xs:order-5 max-xs:w-[20%];
   }
 
@@ -248,7 +348,7 @@
 
   .historyItem__reason {
     @apply w-[21%];
-    @apply max-xs:order-7 max-xs:w-[25%] max-xs:justify-end; 
+    @apply max-xs:order-7 max-xs:w-[25%] max-xs:justify-end;
   }
 
   .historyItem__nickname {
@@ -281,7 +381,7 @@
     @apply text-[#188AEF];
   }
 
-  /*//////////////////////// 비교 /////////////////////*/  
+  /*/ /////////////////////// 비교 /////////////////////*/
 
   .diffHeader {
     @apply w-full flex justify-around mt-[56px] font-[600] text-[#182F43] mb-4 text-base;
@@ -292,7 +392,7 @@
     @apply w-full max-h-[331px] overflow-y-auto overflow-x-auto mb-20;
   }
 
-  .diffContainer table{
+  .diffContainer table {
     @apply w-full min-w-[480px];
   }
 
@@ -300,23 +400,22 @@
     @apply w-full flex items-center justify-center mt-10 mb-32;
   }
 
-
-  /*//////////////////////// 위키  /////////////////////*/  
+  /*//////////////////////// 위키  /////////////////////*/
   .searchitem__listRow {
     @apply py-3 flex items-center bg-[#Fff] border-b-[#f1f1f1] border-b-[1px];
   }
 
   .searchitem__listRow.listhead {
-     @apply bg-[#F4F4F4] border-t-[#C4C4C4] border-t-[1px] border-b-[#C4C4C4] border-b-[1px];
+    @apply bg-[#F4F4F4] border-t-[#C4C4C4] border-t-[1px] border-b-[#C4C4C4] border-b-[1px];
   }
 
   .searchitem__listRow .searchitem__list-item {
-    @apply text-[15px] text-center ;
+    @apply text-[15px] text-center;
     @apply max-sm:text-[14px];
   }
 
   .searchitem__listRow.listhead .searchitem__list-item {
-    @apply font-bold ;
+    @apply font-bold;
   }
   .searchitem__list-item.subject {
     @apply grow text-left pl-5;
@@ -331,7 +430,7 @@
   .searchitem__list-item.time {
     @apply w-[200px] shrink-0;
     @apply max-sm:w-[100px];
-  } 
+  }
   .searchitem__list-item.no-srcData {
     @apply grow text-center py-1 text-[#9AA6B0];
   }
@@ -341,14 +440,14 @@
   }
 
   .searchitem__listWrap .subject .flex {
-     @apply gap-1;
+    @apply gap-1;
   }
 
   .no-data {
     @apply text-[22px] text-[#9AA6B0];
   }
 
-  /*//////////////////////// 학술자료  /////////////////////*/ 
+  /*/ /////////////////////// 학술자료  /////////////////////*/
 
   .libraryItem__row,
   .acuItem_row,
@@ -381,7 +480,7 @@
     @apply mt-3;
   }
 
-  .schResultTab_container .libraryItem__content{
+  .schResultTab_container .libraryItem__content {
     @apply pl-3;
   }
 
@@ -390,36 +489,36 @@
   }
 
   .highlight__tit {
-    @apply bg-yellow-100;  }
+    @apply bg-yellow-100;
+  }
 
-  .acuItem__titleText{
+  .acuItem__titleText {
     @apply font-[600];
   }
-  .acuItem__content{
+  .acuItem__content {
     @apply space-y-[20px] mt-4;
   }
 
-   /*//////////////////////// 침구처방  /////////////////////*/ 
+  /*//////////////////////// 침구처방  /////////////////////*/
 
-  .Prescription__content{
+  .Prescription__content {
     @apply space-y-[20px] mt-4;
   }
- 
 
-  /* //////////////////// 검색결과페이지  /////////////////// */  
-  .schResultTabWrap{
+  /* //////////////////// 검색결과페이지  /////////////////// */
+  .schResultTabWrap {
     @apply mb-20;
-     @apply max-sm:mb-10;
+    @apply max-sm:mb-10;
   }
-  .schResultTabs{
-    @apply flex h-[35px] space-x-9 text-[20px] cursor-pointer tracking-tighter ;
+  .schResultTabs {
+    @apply flex h-[35px] space-x-9 text-[20px] cursor-pointer tracking-tighter;
     @apply max-xs:justify-around max-xs:space-x-0 max-xs:text-[16px];
   }
-  .schResultTabs__tab-btn{
+  .schResultTabs__tab-btn {
     @apply hover:text-blue01 hover:font-semibold hover:border-b-2 hover:border-blue01 transition;
   }
-  .schResultTabs__tab-btn.active{
-    @apply text-blue01 font-semibold border-b-2 border-blue01 ; 
+  .schResultTabs__tab-btn.active {
+    @apply text-blue01 font-semibold border-b-2 border-blue01;
   }
   .searchitem__list-more {
     @apply flex justify-end mt-5;
@@ -427,10 +526,8 @@
   .searchitem__more-btn {
     @apply text-[#1D80D6] text-[16px] cursor-pointer font-bold;
   }
-  .schResultTab_container{
+  .schResultTab_container {
     @apply transition-opacity duration-300 ease-in-out mt-20;
     @apply max-sm:mt-10;
-   }
-
+  }
 }
-

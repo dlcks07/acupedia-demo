@@ -20,5 +20,6 @@ export { default as Terms } from './Terms';
 export { default as WikiCompare } from './WikiCompare';
 export { default as AcupediaIntro } from './AcupediaIntro';
 export { default as WikiGuide } from './WikiGuide';
+export { default as WikiNeeded } from './WikiNeeded';
 export { default as Kcd } from './Kcd';
 

@@ -23,6 +23,7 @@ import {
   LibraryDetail,
   AcupediaIntro,
   WikiGuide,
+  WikiNeeded,
   Kcd,
 } from 'pages';
 import CreateAccount from 'pages/CreateAccount';
@@ -110,6 +111,7 @@ function RootRouter() {
                     <Route path="/privacy" element={<Privacy />} />
                     <Route path="/acupediaIntro" element={<AcupediaIntro />} />
                     <Route path="/wikiGuide" element={<WikiGuide />} />
+                    <Route path="/wikiNeeded" element={<WikiNeeded />} />
                     <Route path="*" element={<Page404 />} />
                   </Routes>
                   {showSideComponent && <SideComponent />}

@@ -1,6 +1,7 @@
 import { AdminAccount, AdminIntro, AdminPost, LibraryCategory, AdminPopup, PaginationBox } from 'components';
 import AdminLibrary from 'components/AdminLibrary';
 import AdminPopupEdit from 'components/AdminPopupEdit';
+import AdminWikiNeeded from 'components/AdminWikiNeeded';
 import { adminAPi, categoryAPi } from 'libs/api';
 import { cls } from 'libs/utils';
 import { useEffect, useState } from 'react';
@@ -190,6 +191,17 @@ function Admin() {
           위키 작성 가이드 관리
         </div>
         <div
+          onClick={() => onTabClick('wikiNeeded')}
+          className={cls(
+            curTab === 'wikiNeeded'
+              ? 'bg-[#0A2996] text-white'
+              : 'text-[#0A2996] text-opacity-50',
+            'tab-btn'
+          )}
+        >
+          작성이 필요한 문서 편집
+        </div>
+        <div
           onClick={() => onTabClick('post')}
           className={cls(
             curTab === 'post'
@@ -247,6 +259,8 @@ function Admin() {
               title="위키(Wiki) 작성하기"
               heading="위키 작성 가이드"
             />
+          ) : curTab === 'wikiNeeded' ? (
+            <AdminWikiNeeded />
           ) : curTab === 'intro' ? (
             <AdminIntro
               key="intro"
@@ -267,7 +281,7 @@ function Admin() {
           )}
         </div>
         {/* 페이지 넘김 */}
-        {curTab === 'popupEdit' ? null : (
+        {curTab === 'popupEdit' || curTab === 'wikiNeeded' ? null : (
           !isNaN(MAX_NUM) && !isNaN(curPass) && !isNaN(offset) ? (
             <div className="admin__pagination-wrap">
               <div className="paginationWrap">

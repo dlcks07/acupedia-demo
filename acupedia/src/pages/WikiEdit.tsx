@@ -1,6 +1,6 @@
 //import TUI from '../components/TUI';
 import TinyMCEEditor from 'components/TinyMCEEditor';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ReactDiffViewer from 'react-diff-viewer';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { WikiRule } from 'components';
@@ -17,7 +17,10 @@ import dayjs from 'dayjs';
 import { useAppDispatch } from 'store';
 import settingSlice from 'slices/setting';
 import { Helmet } from 'react-helmet-async';
-
+import WikiType, {
+  wikiTemplates,
+  WikiContentRequest,
+} from 'components/WikiType';
 
 function WikiEdit() {
   const dispatch = useAppDispatch();
@@ -25,7 +28,7 @@ function WikiEdit() {
   const location = useLocation();
   const [newString, setNewString] = useState('');
   const title = decodeURI(
-    location?.search?.split('?')[1].split('&')[0].split('=')[1]
+    location?.search?.split('?')[1].split('&')[0].split('=')[1],
   );
   const curSearch =
     location.search.split('?')[location.search.split('?').length - 1];
@@ -34,14 +37,17 @@ function WikiEdit() {
   const authority = sessionStorage.getItem('authority');
   const [jwtToken, setJwtToken] = useState(sessionStorage.getItem('jwtToken'));
   const [isLoading, setIsLoading] = useState(false);
-  const locationState = location.state as String;
+  const [contentRequest, setContentRequest] =
+    useState<WikiContentRequest | null>(null);
+  const getEditorTextRef = useRef<() => string>(() => '');
+  const requestKey = useRef(0);
   const { data, isLoading: wikiLoading } = useQuery(
     ['wikiDetail', title],
     wikiApi.wikiDocument,
     {
       enabled: title !== 'newWiki',
       onSuccess: (data) => setCurTitle(data?.data?.title),
-    }
+    },
   );
   const content = data?.data?.content?.replace(/\\n/g, '\n') || '';
   // console.log(location.state);
@@ -101,7 +107,7 @@ function WikiEdit() {
           headers: {
             Authorization: `Bearer ${jwtToken}`,
           },
-        }
+        },
       )
       .finally(() => setIsLoading(false));
     console.log(response);
@@ -126,6 +132,19 @@ function WikiEdit() {
     navigation(-1);
   };
 
+  const handleApplyContent = (html: string, message: string) => {
+    const current = getEditorTextRef.current().trim();
+    if (current) {
+      const ok = window.confirm(
+        `${message}\n\n현재 편집 중인 내용은 삭제됩니다.`
+      );
+      if (!ok) return false;
+    }
+    requestKey.current += 1;
+    setContentRequest({ key: requestKey.current, html });
+    return true;
+  };
+
   const checkEnter = (e: any) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -137,8 +156,8 @@ function WikiEdit() {
   };
 
   useEffect(() => {
-    if (title === 'newWiki') {
-      setCurTitle(String(locationState));
+    if (title === 'newWiki' && typeof location.state === 'string') {
+      setCurTitle(location.state);
     }
     window.addEventListener('storage', refreshJwtToken);
 
@@ -152,7 +171,7 @@ function WikiEdit() {
       dispatch(
         settingSlice.actions.setLastPageBeforeLogin({
           lastPageBeforeLogin: curLocation,
-        })
+        }),
       );
       navigation('/login');
     }
@@ -171,66 +190,95 @@ function WikiEdit() {
   return wikiLoading ? null : (
     <div className="subLeft__container">
       <Helmet>
-        <title>{`${title === 'newWiki' ? (location.state as string || '새 위키 작성') : title} - 아큐피디아 위키 편집`}</title>
-        <meta name="description" content="아큐피디아 위키 문서 편집 페이지입니다." />
+        <title>{`${
+          title === 'newWiki'
+            ? (location.state as string) || '새 위키 작성'
+            : title
+        } - 아큐피디아 위키 편집`}</title>
+        <meta
+          name="description"
+          content="아큐피디아 위키 문서 편집 페이지입니다."
+        />
         <meta name="robots" content="noindex, nofollow" />
-        <link rel="canonical" href={`https://www.acupedia.net/wikiEdit?title=${encodeURIComponent(title)}`} />
+        <link
+          rel="canonical"
+          href={`https://www.acupedia.net/wikiEdit?title=${encodeURIComponent(
+            title,
+          )}`}
+        />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="아큐피디아" />
-        <meta property="og:title" content={`${title === 'newWiki' ? (location.state as string || '새 위키 작성') : title} - 아큐피디아 위키 편집`} />
-        <meta property="og:description" content="아큐피디아 위키 문서 편집 페이지입니다." />
-        <meta property="og:url" content={`https://www.acupedia.net/wikiEdit?title=${encodeURIComponent(title)}`} />
-        <meta property="og:image" content="https://www.acupedia.net/icons/acupedia.png" />
+        <meta
+          property="og:title"
+          content={`${
+            title === 'newWiki'
+              ? (location.state as string) || '새 위키 작성'
+              : title
+          } - 아큐피디아 위키 편집`}
+        />
+        <meta
+          property="og:description"
+          content="아큐피디아 위키 문서 편집 페이지입니다."
+        />
+        <meta
+          property="og:url"
+          content={`https://www.acupedia.net/wikiEdit?title=${encodeURIComponent(
+            title,
+          )}`}
+        />
+        <meta
+          property="og:image"
+          content="https://www.acupedia.net/icons/acupedia.png"
+        />
       </Helmet>
       {curSearch !== 'admin' ? (
-        <div className="subLeft_pageTit">편집하기</div>
+        <div className="subLeft_pageTit">
+          {title === 'newWiki' ? '새 위키문서 작성' : '편집하기'}
+        </div>
       ) : null}
-      <div className="subLeft__header">
 
-          <div className="subLeft__titleBox">
-            {title === 'newWiki' ? (
-              // <textarea
-              //   maxLength={40}
-              //   className="w-full resize-none pr-16 tracking-tighter font-semibold"
-              //   placeholder="제목을 입력하세요."
-              //   onChange={(e) => setCurTitle(e.target.value)}
-              //   value={curTitle}
-              //   onKeyPress={checkEnter}
-              //   autoFocus
-              // />
-              <span className="subLeft__title">{location.state as String}</span>
-            ) : (
-              <>
-                {authority === 'ADMIN' ? (
-                  <textarea
-                    maxLength={40}
-                    className="subLeft__title"
-                    placeholder="제목을 입력하세요."
-                    value={curTitle}
-                    onChange={(e) => setCurTitle(e.target.value)}
-                    onKeyPress={checkEnter}
-                    autoFocus
-                  />
-                ) : (
-                  <span className="subLeft__title">{title}</span>
-                )}
-              </>
-            )}
-          </div>
+      {title === 'newWiki' ? (
+        <WikiType
+          title={curTitle}
+          onTitleChange={setCurTitle}
+          onApplyContent={handleApplyContent}
+        />
+      ) : (
+      <div className="subLeft__header">
+        <div className="subLeft__titleBox">
+            <>
+              {authority === 'ADMIN' ? (
+                <textarea
+                  maxLength={40}
+                  className="subLeft__title"
+                  placeholder="제목을 입력하세요."
+                  value={curTitle}
+                  onChange={(e) => setCurTitle(e.target.value)}
+                  onKeyPress={checkEnter}
+                  autoFocus
+                />
+              ) : (
+                <span className="subLeft__title">{title}</span>
+              )}
+            </>
+        </div>
 
         <div className="subLeft__tools">
-          {title !== 'newWiki' ? (
             <div className="subLeft__toolbar">
-              <span onClick={onReadClick} className="subLeft__btn">읽기</span>
+              <span onClick={onReadClick} className="subLeft__btn">
+                읽기
+              </span>
               <span className="subLeft__btn current">편집</span>
-              <span onClick={onHistoryClick} className="subLeft__btn">히스토리</span>
+              <span onClick={onHistoryClick} className="subLeft__btn">
+                히스토리
+              </span>
             </div>
-          ) : null}
-          {title !== 'newWiki' ? (
             <div className="subLeft__editInfo">
               <p className="subLeft__editRow">
                 <span className="subLeft__editLabel"> 최종 편집자</span>
-                <span className="subLeft__editorName">{data?.data?.nickname}</span>
+                <span className="subLeft__editorName">
+                  {data?.data?.nickname}
+                </span>
                 <span className="subLeft__editRole">
                   {data?.data?.authority === 'ADMIN'
                     ? '어드민'
@@ -246,15 +294,15 @@ function WikiEdit() {
                 <span>
                   {data?.data?.lastModifiedAt
                     ? dayjs(data?.data?.lastModifiedAt).format(
-                        'YYYY-MM-DD HH:mm:ss'
+                        'YYYY-MM-DD HH:mm:ss',
                       )
                     : ''}
                 </span>
               </p>
             </div>
-          ) : null}
         </div>
       </div>
+      )}
       {title !== 'newWiki' ? (
         <>
           <div className="diffHeader">
@@ -274,34 +322,45 @@ function WikiEdit() {
       ) : null}
 
       <div className="wikiEdit__link" style={{ display: 'none' }}>
-          <button
-            onClick={() =>
-              window.open(
-                'https://gist.github.com/ihoneymon/652be052a0727ad59601'
-              )
-            }
-            className="wikiEdit__link-btn"
-          >
-            아큐피디아 편집기 사용설명서
-          </button>        
+        <button
+          onClick={() =>
+            window.open(
+              'https://gist.github.com/ihoneymon/652be052a0727ad59601',
+            )
+          }
+          className="wikiEdit__link-btn"
+        >
+          아큐피디아 편집기 사용설명서
+        </button>
       </div>
 
       <div className="wickEditor-wrap">
         {/* { <TUI oldString={content} setNewString={setNewString} />} */}
-        {<TinyMCEEditor oldString={content} setNewString={setNewString} />}
-      </div>        
-      
+        <TinyMCEEditor
+          oldString={content}
+          setNewString={setNewString}
+          initialTemplate={
+            title === 'newWiki' ? wikiTemplates.acupointTheory : undefined
+          }
+          contentRequest={contentRequest}
+          onBindEditor={(getText) => {
+            getEditorTextRef.current = getText;
+          }}
+        />
+      </div>
+
       <div className="wikiEdit__btm-btns">
         <span onClick={onSubmitClick} className="btn blue02">
           {isLoading ? <ClipLoader size={20} /> : '완료'}
         </span>
-        <span onClick={onCancelClick} className="btn grey">취소</span>
+        <span onClick={onCancelClick} className="btn grey">
+          취소
+        </span>
       </div>
 
       <div className="subLeft__rules">
         <WikiRule />
       </div>
-
     </div>
   );
 }
