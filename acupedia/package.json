@@ -2,7 +2,7 @@
   "name": "acupedia",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dlcks07.github.io/acupedia-clone",
+  "homepage": "https://dlcks07.github.io/acupedia-demo",
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^36.0.1",
     "@ckeditor/ckeditor5-react": "^5.0.6",
