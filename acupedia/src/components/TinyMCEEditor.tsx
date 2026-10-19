@@ -60,15 +60,13 @@ function applyHeadingNumbers(headings: HTMLElement[]) {
 
 function generateTableOfContents(
   editor: any,
-  onContentChange?: (html: string) => void
+  onContentChange?: (html: string) => void,
 ) {
   const body = editor.getBody() as HTMLElement;
   const oldToc = body.querySelector('.acupedia-toc');
   if (oldToc) oldToc.remove();
 
-  const headings = Array.from(
-    body.querySelectorAll('h2, h3')
-  ) as HTMLElement[];
+  const headings = Array.from(body.querySelectorAll('h2, h3')) as HTMLElement[];
 
   if (headings.length === 0) {
     editor.notificationManager.open({
@@ -125,7 +123,7 @@ function generateTableOfContents(
   headings[0].parentNode?.insertBefore(toc, headings[0]);
 
   const toggle = toc.querySelector(
-    '.acupedia-toc-toggle'
+    '.acupedia-toc-toggle',
   ) as HTMLElement | null;
   toggle?.addEventListener('click', () => {
     const isHidden = tocList.style.display === 'none';
@@ -155,7 +153,9 @@ function TinyMCEEditor({
   }>({ id: null, text: null });
   const [tinymceEditor, setTinymceEditor] = useState<any>(null);
   const [quoteCount, setQuoteCount] = useState(1);
-  const [popoverPos, setPopoverPos] = useState<{ x: number; y: number } | null>(null);
+  const [popoverPos, setPopoverPos] = useState<{ x: number; y: number } | null>(
+    null,
+  );
   const [isWikiLinkModalOpen, setWikiLinkModalOpen] = useState(false);
   const wikiLinkBookmarkRef = useRef<any>(null);
   const appliedRequestKey = useRef<number | null>(null);
@@ -185,7 +185,7 @@ function TinyMCEEditor({
 
     tinymceEditor.setContent(contentRequest.html);
     generateTableOfContents(tinymceEditor, (html) =>
-      setNewStringRef.current(html)
+      setNewStringRef.current(html),
     );
     appliedRequestKey.current = contentRequest.key;
   }, [tinymceEditor, contentRequest]);
@@ -201,18 +201,24 @@ function TinyMCEEditor({
   }
 
   type ProgressFn = (percent: number) => void;
-  type UploadHandler = (blobInfo: BlobInfo, progress: ProgressFn) => Promise<string>;
+  type UploadHandler = (
+    blobInfo: BlobInfo,
+    progress: ProgressFn,
+  ) => Promise<string>;
 
-  const example_image_upload_handler: UploadHandler = (_blobInfo: any, progress: ProgressFn) =>
+  const example_image_upload_handler: UploadHandler = (
+    _blobInfo: any,
+    progress: ProgressFn,
+  ) =>
     new Promise((resolve) => {
-    // const xhr = new XMLHttpRequest();
-    // xhr.withCredentials = false;
-    // xhr.open('POST', `${process.env.REACT_APP_API_URL}/image`);
-    // xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
-    // xhr.send(formData);
-    progress(100);
-    resolve(`${process.env.PUBLIC_URL || ''}/icons/acupedia.png`);
-  });
+      // const xhr = new XMLHttpRequest();
+      // xhr.withCredentials = false;
+      // xhr.open('POST', `${process.env.REACT_APP_API_URL}/image`);
+      // xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
+      // xhr.send(formData);
+      progress(100);
+      resolve(`${process.env.PUBLIC_URL || ''}/icons/acupedia.png`);
+    });
 
   // 에디터 안의 모든 footnote 번호를 DOM 순서대로 재정렬
   const renumberFootnotes = (editor: any) => {
@@ -225,34 +231,33 @@ function TinyMCEEditor({
   };
 
   // sup.footnote 바로 "뒤"에 '보이지 않는 텍스트 노드'를 만들고, 그 안에 커서 두기
-const moveCursorAfterFootnote = (editor: any, node: HTMLElement) => {
-  const doc = editor.getDoc();
-  if (!doc) return;
+  const moveCursorAfterFootnote = (editor: any, node: HTMLElement) => {
+    const doc = editor.getDoc();
+    if (!doc) return;
 
-  const parent = node.parentNode;
-  if (!parent) return;
+    const parent = node.parentNode;
+    if (!parent) return;
 
-  const zwsp = doc.createTextNode('\u200B'); // &#8203;
+    const zwsp = doc.createTextNode('\u200B'); // &#8203;
 
-  if (node.nextSibling) {
-    parent.insertBefore(zwsp, node.nextSibling);
-  } else {
-    parent.appendChild(zwsp);
-  }
+    if (node.nextSibling) {
+      parent.insertBefore(zwsp, node.nextSibling);
+    } else {
+      parent.appendChild(zwsp);
+    }
 
-  const rng = doc.createRange();
-  rng.setStart(zwsp, 1);  
-  rng.setEnd(zwsp, 1);
+    const rng = doc.createRange();
+    rng.setStart(zwsp, 1);
+    rng.setEnd(zwsp, 1);
 
-  editor.selection.setRng(rng);
-  editor.focus();
-};
-
+    editor.selection.setRng(rng);
+    editor.focus();
+  };
 
   return (
     <>
       <Editor
-        apiKey="yklugaruw5igysliyx4ndawsdg2qfzeznw7u7czb5uwwjt2d"
+        apiKey="ablbmf6tndkwhkcqx9m0u9x20jm8xakx56kluvrf76eb7ka3"
         initialValue={oldString || ``}
         onEditorChange={handleEditorChange}
         onInit={(_evt, editor) => {
@@ -305,7 +310,7 @@ const moveCursorAfterFootnote = (editor: any, node: HTMLElement) => {
             if (!oldString && initialTemplate) {
               editor.setContent(initialTemplate);
               generateTableOfContents(editor, (html) =>
-                setNewStringRef.current(html)
+                setNewStringRef.current(html),
               );
             }
           },
@@ -397,7 +402,7 @@ const moveCursorAfterFootnote = (editor: any, node: HTMLElement) => {
               text: '목차 생성/갱신',
               onAction: () => {
                 generateTableOfContents(editor, (html) =>
-                  setNewStringRef.current(html)
+                  setNewStringRef.current(html),
                 );
               },
             });
@@ -406,7 +411,10 @@ const moveCursorAfterFootnote = (editor: any, node: HTMLElement) => {
               text: '📖 위키링크',
               tooltip: '위키·학술자료고 링크 삽입',
               onAction: () => {
-                wikiLinkBookmarkRef.current = editor.selection.getBookmark(2, true);
+                wikiLinkBookmarkRef.current = editor.selection.getBookmark(
+                  2,
+                  true,
+                );
                 setWikiLinkModalOpen(true);
               },
             });
@@ -420,7 +428,7 @@ const moveCursorAfterFootnote = (editor: any, node: HTMLElement) => {
                 setQuoteEditInfo({ id: null, text: null });
                 const placeholderId = `quote-placeholder-${Date.now()}`;
                 editor.insertContent(
-                  `<sup class="footnote" id="${placeholderId}" data-footnote="">[..]</sup>`
+                  `<sup class="footnote" id="${placeholderId}" data-footnote="">[..]</sup>`,
                 );
 
                 setTimeout(() => {
@@ -438,7 +446,11 @@ const moveCursorAfterFootnote = (editor: any, node: HTMLElement) => {
             // 인용 클릭 시 수정 모드
             editor.on('click', (e: any) => {
               const target = e.target as HTMLElement;
-              if (target && target.classList && target.classList.contains('footnote')) {
+              if (
+                target &&
+                target.classList &&
+                target.classList.contains('footnote')
+              ) {
                 const currentText = target.getAttribute('data-footnote') || '';
                 setQuoteInput(currentText);
                 setQuoteEditInfo({ id: target.id || null, text: currentText });
@@ -486,7 +498,9 @@ const moveCursorAfterFootnote = (editor: any, node: HTMLElement) => {
           }}
         >
           <h3 className="tinyeditor-modal-title">
-            {quoteEditInfo.id && quoteEditInfo.text ? '인용문 수정' : '인용문 입력'}
+            {quoteEditInfo.id && quoteEditInfo.text
+              ? '인용문 수정'
+              : '인용문 입력'}
           </h3>
           <div className="tinyeditor-modal-cnt">
             <textarea
@@ -500,12 +514,19 @@ const moveCursorAfterFootnote = (editor: any, node: HTMLElement) => {
               <button
                 onClick={() => {
                   // placeholder 상태에서 취소 시 삭제
-                  if (tinymceEditor && quoteEditInfo.id && !quoteEditInfo.text) {
+                  if (
+                    tinymceEditor &&
+                    quoteEditInfo.id &&
+                    !quoteEditInfo.text
+                  ) {
                     const node = tinymceEditor.dom.get(quoteEditInfo.id);
                     if (node) {
                       tinymceEditor.dom.remove(node);
                       renumberFootnotes(tinymceEditor);
-                      handleEditorChange(tinymceEditor.getContent(), tinymceEditor);
+                      handleEditorChange(
+                        tinymceEditor.getContent(),
+                        tinymceEditor,
+                      );
                     }
                   }
                   setQuoteModalOpen(false);
@@ -523,11 +544,13 @@ const moveCursorAfterFootnote = (editor: any, node: HTMLElement) => {
                   if (!tinymceEditor) return;
 
                   const rawNode =
-                    (quoteEditInfo.id && tinymceEditor.dom.get(quoteEditInfo.id)) ||
+                    (quoteEditInfo.id &&
+                      tinymceEditor.dom.get(quoteEditInfo.id)) ||
                     tinymceEditor.selection.getNode();
 
                   const node =
-                    rawNode && (rawNode as HTMLElement).classList?.contains('footnote')
+                    rawNode &&
+                    (rawNode as HTMLElement).classList?.contains('footnote')
                       ? (rawNode as HTMLElement)
                       : null;
 
@@ -536,7 +559,10 @@ const moveCursorAfterFootnote = (editor: any, node: HTMLElement) => {
                     if (node) {
                       tinymceEditor.dom.remove(node);
                       renumberFootnotes(tinymceEditor);
-                      handleEditorChange(tinymceEditor.getContent(), tinymceEditor);
+                      handleEditorChange(
+                        tinymceEditor.getContent(),
+                        tinymceEditor,
+                      );
                     }
                     setQuoteModalOpen(false);
                     setQuoteInput('');
@@ -557,7 +583,9 @@ const moveCursorAfterFootnote = (editor: any, node: HTMLElement) => {
                     tinymceEditor.insertContent(html);
 
                     // 방금 삽입된 마지막 footnote
-                    const nodes = tinymceEditor.dom.select('sup.footnote') as HTMLElement[];
+                    const nodes = tinymceEditor.dom.select(
+                      'sup.footnote',
+                    ) as HTMLElement[];
                     targetFoot = nodes.length ? nodes[nodes.length - 1] : null;
                   }
 
